@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>头条管理</title>
+  <script src="/javascripts/jquery.js"></script>
+  <style>
+   #login_module {
+        text-align: center;
+    }
+    #login_module img{
+        width:360px;
+        height:150px;
+    }
+    #login_module form{
+        padding:40px;
+    }
+    #login_module input {
+        width: 160px;
+        height: 25px;
+        border:none;
+        border-bottom:solid 1px #ccc;
+    }
+    #login_module button {
+        width: 100px;
+        height: 30px;
+        background: #0c0c;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 16px;
+        margin-left: 10px
+    }
+  </style>
+</head>
+<body>
+ <div id="login_module">
+    <img src="/images/img-1510727633149.jpeg" alt="">
+        <form action="">
+        <h3>超级管理员</h3>
+            <span>用户</span>：<input name="username" placeholder="请输入姓名" type="text"><br><br> 
+            <span>密码</span>：<input name="password" placeholder="请输入密码" type="password"><br><br>
+            <input type="submit" value="注册"><br><br>
+            <div><a href="/mdenglu">已注册，去登陆</a></div>
+        </form>
+    </div>
+</body>
+<script>
+$('form').submit(function(ev){
+ev.preventDefault();
+var data =$(this).serialize();
+$.post('/mzhuce',data,function(resdata){
+  console.log(resdata)
+  if(resdata.err==0){
+    location.href='/mdenglu'
+  }
+})
+})
+</script>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>头条管理</title>
+  <script src="/javascripts/jquery.js"></script>
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <style>
+    #content-msg {
+        font-size: 14px;
+    }
+    
+    #content-msg span {
+        background: #fff;
+        color: #999;
+        padding: 2px;
+        border-radius: 8px;
+        border: solid 1px #ddd;
+        font-size: 12px;
+    }
+     #content-msg span:last-child{
+        margin-left:160px
+     }
+    #content-msg span a:hover {
+        background: red;
+        color: #fff;
+    }
+    #content-msg span a{
+        color:#999;
+        text-decoration:none;
+    }
+    li{
+        list-style:none;
+        border-bottom:solid 1px #ddd;
+        margin-right:25px;
+         margin-top:5px;
+    }
+    #user_msg{
+        width:170px;
+        color:#666;
+        padding:2px 3px;
+        margin-left:170px;
+         margin-top:-50px;
+    }
+    #user_msg span{
+        margin-right:10px;
+    }
+     #user_msg span a{
+         color:#000;
+         text-decoration:none;
+     }
+    h2{
+        width:100px;
+        margin:0 auto;
+    }
+    img{
+        width:100px;
+    }
+      input {
+        width: 220px;
+        height: 25px;
+        border: solid 1px #ddd;
+        border-radius: 5px;
+        margin-left:105px;
+    }
+    #search_btn{
+        position:relative;
+        left:-15px;
+        
+    }
+    #sort{
+        position:relative;
+        top:-42px;
+        width:100px;
+    }
+     #sort span{
+         margin:2px;
+         padding:5px;
+         background:red;
+         border-radius:5px;
+         color:#fff;
+         cursor:pointer;
+     }
+      #sort span a{
+          color:#fff;
+      }
+      #sort span:hover{
+          background:#666;
+          color:#000;
+      }
+      h2{
+          padding:5px;
+      }
+  </style>
+</head>
+<body>
+ <div>
+ <h2>后台管理</h2>
+ <a href="/search"><input type="text" placeholder="输入关键字以搜索"></a><span id="search_btn"><i class="fa fa-search"></i></span>
+    <p id="sort"><span><a href="/news">默认</a></span><span><a href="/up">↑</a></span><span><a href="/news">↓</a></span></p>
+ <p id="user_msg"><span>管理员：<%= user.username %></span><span><a href="/tuichu">退出</a></span></p>
+ <div id="content-wrap">
+<ul>
+  <% data.forEach(function(item,ins){  %>
+      <li>
+        <h4><%= item.title %> </a></h4>
+        <img src="images/<%= item.pic_url %>" alt="">
+        <p id="content"><%= item.content %> </p>
+        <p id="content-msg"><span><a href="/shanchu/<%= item._id %>">删除</a></span><span>作者：<%= item.author %> </span></p>
+      </li>
+  <% }) %>
+</ul>
+</div>
+</body>
+<script>
+</script>
+</html>
